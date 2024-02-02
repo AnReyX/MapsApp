@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>923</width>
+    <height>688</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,10 +17,10 @@
    <widget class="Line" name="line">
     <property name="geometry">
      <rect>
-      <x>-30</x>
-      <y>30</y>
-      <width>861</width>
-      <height>61</height>
+      <x>-60</x>
+      <y>50</y>
+      <width>1051</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="orientation">
@@ -30,7 +30,7 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>390</x>
       <y>0</y>
       <width>141</width>
       <height>41</height>
@@ -40,14 +40,14 @@
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:28pt;&quot;&gt;Map API&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:28pt; color:#ff0004;&quot;&gt;M&lt;/span&gt;&lt;span style=&quot; font-size:28pt;&quot;&gt;ap API&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>350</y>
+      <x>750</x>
+      <y>510</y>
       <width>141</width>
       <height>31</height>
      </rect>
@@ -61,8 +61,8 @@
      <rect>
       <x>40</x>
       <y>90</y>
-      <width>421</width>
-      <height>321</height>
+      <width>851</width>
+      <height>411</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -75,9 +75,22 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>10</y>
-       <width>401</width>
-       <height>301</height>
+       <y>0</y>
+       <width>831</width>
+       <height>391</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>-840</x>
+       <y>-40</y>
+       <width>1121</width>
+       <height>51</height>
       </rect>
      </property>
      <property name="text">
@@ -88,8 +101,8 @@
    <widget class="QLineEdit" name="X_Pos_line">
     <property name="geometry">
      <rect>
-      <x>550</x>
-      <y>120</y>
+      <x>110</x>
+      <y>510</y>
       <width>113</width>
       <height>20</height>
      </rect>
@@ -98,8 +111,8 @@
    <widget class="QLineEdit" name="Y_Pos_line">
     <property name="geometry">
      <rect>
-      <x>550</x>
-      <y>150</y>
+      <x>110</x>
+      <y>540</y>
       <width>113</width>
       <height>20</height>
      </rect>
@@ -108,8 +121,8 @@
    <widget class="QLineEdit" name="Zoom_line">
     <property name="geometry">
      <rect>
-      <x>550</x>
-      <y>180</y>
+      <x>320</x>
+      <y>510</y>
       <width>113</width>
       <height>20</height>
      </rect>
@@ -118,40 +131,53 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>120</y>
+      <x>40</x>
+      <y>510</y>
       <width>71</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;X_position:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; color:#ff0004;&quot;&gt;X&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;_position:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>150</y>
+      <x>40</x>
+      <y>540</y>
       <width>71</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Y_position:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; color:#ff0004;&quot;&gt;Y&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;_position:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>180</y>
+      <x>250</x>
+      <y>510</y>
       <width>71</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Zoom:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; color:#ff0004;&quot;&gt;Z&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;oom:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>610</y>
+      <width>931</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
     </property>
    </widget>
   </widget>
@@ -160,7 +186,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>923</width>
      <height>21</height>
     </rect>
    </property>
