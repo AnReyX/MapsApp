@@ -1,6 +1,7 @@
 import sys
 import requests
 from PyQt5 import uic
+from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
@@ -13,15 +14,40 @@ class MapsAPI(QMainWindow):
 
         self.Search_btn.clicked.connect(self.updateMap)
 
+    def keyPressEvent(self, event):
+        if event.key() in (Qt.Key_PageUp, Qt.Key_PageDown):
+            try:
+                n = float(self.Zoom_line.text())
+                self.Zoom_line.setText(str(round(n + (0.1 if event.key() == Qt.Key_PageUp else -0.1), 1)))
+                self.updateMap()
+            except ValueError:
+                self.Zoom_line.setText('0')
+        event.accept()
+
     def updateMap(self):
-        x_position = self.X_Pos_line.text()
-        y_position = self.Y_Pos_line.text()
-        zoom = self.Zoom_line.text()
-
-        self.request = f"https://static-maps.yandex.ru/1.x/?ll={x_position},{y_position}&z={zoom}&l=sat"
-        response = requests.get(self.request)
-
-        # Обновляем карту
+        try:
+            x = float(self.X_Pos_line.text())
+            if not 0 <= x < 180:
+                raise ValueError
+        except ValueError:
+            self.X_Pos_line.setText('0')
+            x = 0
+        try:
+            y = float(self.Y_Pos_line.text())
+            if not 0 <= y < 85:
+                raise ValueError
+        except ValueError:
+            self.Y_Pos_line.setText('0')
+            y = 0
+        try:
+            spn = float(self.Zoom_line.text())
+            if not 0 <= spn <= 90:
+                self.Zoom_line.setText('0' if 0 > spn else '90')
+                spn = 0 if 0 > spn else 90
+        except ValueError:
+            self.Zoom_line.setText('0')
+            spn = 0
+        response = requests.get(f"https://static-maps.yandex.ru/1.x/?ll={x},{y}&spn={spn},{spn}&size=650,400&l=sat")
         with open(self.map_file, 'wb') as f:
             f.write(response.content)
         pixmap = QPixmap(self.map_file)
