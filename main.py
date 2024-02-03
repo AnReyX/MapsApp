@@ -11,7 +11,7 @@ class MapsAPI(QMainWindow):
         uic.loadUi('Map_API.ui', self)
         self.map_file = 'map.png'
 
-        self.pushButton.clicked.connect(self.updateMap)
+        self.Search_btn.clicked.connect(self.updateMap)
 
     def updateMap(self):
         x_position = self.X_Pos_line.text()
