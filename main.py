@@ -4,7 +4,8 @@ from PyQt5 import uic
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from ErrorWindow import Error_Window
+from ErrorWindow import ErrorWindow
+import time
 
 
 class MapsAPI(QMainWindow):
@@ -13,6 +14,7 @@ class MapsAPI(QMainWindow):
         uic.loadUi('Map_API.ui', self)
         self.map_file = 'map.png'
         self.map_type = 'map'
+        self.pbar.hide()
         self.Search_btn.clicked.connect(self.updateMap)
         self.top_search.clicked.connect(self.get_toponym)
         self.Hybrid_btn.clicked.connect(self.Hybrid_Map)
@@ -48,6 +50,8 @@ class MapsAPI(QMainWindow):
         event.accept()
 
     def updateMap(self):
+        self.pbar.show()
+        self.doAction()
         try:
             x = float(self.X_Pos_line.text())
             if not 0 <= x < 180:
@@ -107,10 +111,16 @@ class MapsAPI(QMainWindow):
                 self.Zoom_line.setText('0.005')
                 self.updateMap()
         else:
-            print("Ошибка выполнения запроса")
+            self.Error()
+
+    def doAction(self):
+        for i in range(101):
+            time.sleep(0.01)
+            self.label_6.show()
+            self.pbar.setValue(i)
 
     def Error(self):
-        self.error = Error_Window(self)
+        self.error = ErrorWindow()
         self.error.show()
 
 
