@@ -262,7 +262,7 @@ background-color: rgb(255, 252, 226);</string>
 background-color: rgb(255, 252, 226);</string>
     </property>
     <property name="text">
-     <string>Search On Yandex Map</string>
+     <string>Search Toponym</string>
     </property>
    </widget>
   </widget>
