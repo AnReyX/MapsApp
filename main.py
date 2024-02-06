@@ -54,7 +54,7 @@ class MapsAPI(QMainWindow):
         self.doAction()
         try:
             x = float(self.X_Pos_line.text())
-            if not 0 <= x < 180:
+            if not -180 <= x < 180:
                 raise ValueError
         except ValueError:
             self.Error()
@@ -62,7 +62,7 @@ class MapsAPI(QMainWindow):
             x = 0
         try:
             y = float(self.Y_Pos_line.text())
-            if not 0 <= y < 85:
+            if not -180 <= y < 85:
                 raise ValueError
         except ValueError:
             self.Error()
