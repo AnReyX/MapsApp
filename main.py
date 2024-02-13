@@ -26,7 +26,7 @@ class MapsAPI(QMainWindow):
             try:
                 n = float(self.Zoom_line.text())
                 self.Zoom_line.setText(str(round(n + (0.1 if event.key() == Qt.Key_PageUp else -0.1), 1)))
-                self.updateMap()
+                self.updateMap(False)
             except ValueError:
                 self.Error()
                 self.Zoom_line.setText('0')
@@ -34,7 +34,7 @@ class MapsAPI(QMainWindow):
             try:
                 n = float(self.Y_Pos_line.text())
                 self.Y_Pos_line.setText(str(round(n + (0.1 if event.key() == Qt.Key_Up else -0.1), 1)))
-                self.updateMap()
+                self.updateMap(False)
             except ValueError:
                 self.Error()
                 self.Y_Pos_line.setText('0')
@@ -43,15 +43,16 @@ class MapsAPI(QMainWindow):
             try:
                 n = float(self.X_Pos_line.text())
                 self.X_Pos_line.setText(str(round(n - (0.1 if event.key() == Qt.Key_Right else -0.1), 1)))
-                self.updateMap()
+                self.updateMap(False)
             except ValueError:
                 self.Error()
                 self.X_Pos_line.setText('0')
         event.accept()
 
-    def updateMap(self):
-        self.pbar.show()
-        self.doAction()
+    def updateMap(self, load=True):
+        if load:
+            self.pbar.show()
+            self.doAction()
         try:
             x = float(self.X_Pos_line.text())
             if not -180 <= x < 180:
@@ -77,8 +78,13 @@ class MapsAPI(QMainWindow):
             self.Error()
             self.Zoom_line.setText('0')
             spn = 0
-        resp = requests.get(
-            f"https://static-maps.yandex.ru/1.x/?ll={x},{y}&spn={spn},{spn}&size=650,400&l={self.map_type}")
+        geo_params = {'ll': '{0},{1}'.format(x, y),
+                      'spn': '{0},{1}'.format(spn, spn),
+                      'size': '650,400',
+                      'l': self.map_type}
+        if load:
+            geo_params['pt'] = "{0},pm2dgl".format("{0},{1}".format(x, y))
+        resp = requests.get(f"https://static-maps.yandex.ru/1.x/", params=geo_params)
         with open(self.map_file, 'wb') as f:
             f.write(resp.content)
         pixmap = QPixmap(self.map_file)
